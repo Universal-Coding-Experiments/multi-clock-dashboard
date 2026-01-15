@@ -1,0 +1,233 @@
+:root {
+    --bg-light: #f3f4f6;
+    --card-light: #ffffff;
+    --text-light: #0f172a;
+    --muted-light: #475569;
+    --bg-dark: #071022;
+    --card-dark: #0f1724;
+    --text-dark: #e6eef8;
+    --muted-dark: #9fb0d1;
+    --accent-minute: #06b6d4;
+    --accent-second: #ef4444;
+    --focus: rgba(37, 99, 235, 0.18);
+}
+
+:root {
+    --bg: var(--bg-light);
+    --card: var(--card-light);
+    --text: var(--text-light);
+    --muted: var(--muted-light);
+}
+
+[data-theme="dark"] {
+    --bg: var(--bg-dark);
+    --card: var(--card-dark);
+    --text: var(--text-dark);
+    --muted: var(--muted-dark);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui;
+    overflow-x: hidden;
+}
+
+.controls {
+    width: min(1200px, 96%);
+    margin: 12px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btn {
+    padding: .5rem .75rem;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn.primary {
+    background: #2563eb;
+    color: #fff;
+    border-color: transparent;
+}
+
+#clockGrid {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    justify-content: center;
+    justify-items: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+#clockGrid.layout-1 {
+    grid-template-columns: 1fr;
+}
+
+#clockGrid.layout-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+#clockGrid.layout-3 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: "a b" "c c";
+}
+
+#clockGrid.layout-4 {
+    grid-template-columns: 1fr 1fr;
+}
+
+#clockGrid.layout-gt4 {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.clock-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: min(720px, 100%);
+    max-width: 720px;
+    margin: 0 auto;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.card-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+.tz-label {
+    font-weight: 700;
+}
+
+.tz-sub {
+    font-size: .85rem;
+    color: var(--muted);
+}
+
+.card-actions {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.clock-svg-wrap {
+    width: clamp(160px, 36vw, 320px);
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+svg.clock {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.digital {
+    margin-top: .5rem;
+    font-family: ui-monospace;
+    font-size: 1rem;
+    color: var(--text);
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: grid;
+    place-items: center;
+    z-index: 60;
+}
+
+.modal {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 12px;
+    width: min(520px, 94%);
+}
+
+.modal input,
+.modal select {
+    width: 100%;
+    padding: .6rem;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: var(--card);
+    color: var(--text);
+    margin-bottom: .6rem;
+}
+
+@media(max-width:640px) {
+    #clockGrid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .clock-card {
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 0 auto 1rem auto;
+        padding: .75rem;
+        box-sizing: border-box;
+    }
+
+    .clock-svg-wrap {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    .clock-svg-wrap svg {
+        max-height: 40vh;
+        width: 100%;
+        height: auto;
+    }
+
+    .modal {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 10px;
+    }
+
+    .modal input,
+    .modal select,
+    .modal button {
+        font-size: 1rem;
+        padding: .75rem;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+}

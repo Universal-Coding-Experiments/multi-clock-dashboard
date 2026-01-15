@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <title>Multi Clock Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body data-theme="light">
+
+  <div class="controls">
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <h1 style="margin:0;font-size:1.125rem;font-weight:700">Multi Clock Dashboard</h1>
+    </div>
+    <div style="display:flex;gap:.5rem;align-items:center">
+      <button id="themeToggle" class="btn" aria-pressed="false">Dark</button>
+      <button id="addClockBtn" class="btn primary">+ Add Clock</button>
+    </div>
+  </div>
+
+  <main id="clockGrid" class="layout-1" aria-live="polite"></main>
+
+  <div id="tzModal" class="hidden" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h3 id="modalTitle" style="margin:0 0 .5rem 0">Add Clock</h3>
+        <label for="tzZone" style="display:block;margin-bottom:.25rem;color:var(--muted)">Timezone</label>
+        <select id="tzZone" style="margin-bottom:.6rem">
+          <option value="local">Local Time (system)</option>
+          <option value="UTC">UTC</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Paris">Europe/Paris</option>
+          <option value="Europe/Berlin">Europe/Berlin</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="America/Chicago">America/Chicago</option>
+          <option value="America/Denver">America/Denver</option>
+          <option value="America/Los_Angeles">America/Los_Angeles</option>
+          <option value="Asia/Kolkata">Asia/Kolkata</option>
+          <option value="Asia/Shanghai">Asia/Shanghai</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Asia/Singapore">Asia/Singapore</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+        </select>
+
+        <label for="tzLabel" style="display:block;margin-bottom:.25rem;color:var(--muted)">Label</label>
+        <input id="tzLabel" placeholder="Clock name" />
+
+        <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.25rem">
+          <button id="cancelAdd" class="btn">Cancel</button>
+          <button id="confirmAdd" class="btn primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
